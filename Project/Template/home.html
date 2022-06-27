@@ -5,7 +5,19 @@
 {%block content%}
 
 	<h1 style="text-align:center; margin-top:20px;">Welcome to our website {{user.username}}!</h1>
-	<img src="{%static 'images/shape.png'%}">
+	
+		<div class="flip-card">
+		<div class="flip-card-inner">
+		  <div class="flip-card-front">
+			<img src="{%static 'images/OIP.jpg'%}" alt="PYTHON" style="width:300px;height:300px;">
+		  </div>
+		  <div class="flip-card-back">
+			<h1>John Doe</h1>
+			<p>Architect & Engineer</p>
+			<p>We love that guy</p>
+		  </div>
+		</div>
+	  </div>
 	
 
 {%endblock%}
