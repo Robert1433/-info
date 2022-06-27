@@ -1,0 +1,33 @@
+body{
+	background-image: url(../images/back.jpg);
+	background-position: cover;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.login_link{
+	text-align: center;
+	text-decoration: none;
+	color:aliceblue;
+}
+
+.login_link:hover{
+	text-align: center;
+	text-decoration: none;
+	color:aliceblue;
+}
+
+label{
+	font-size: 24px;
+	font-weight: bold;
+	color:aliceblue;
+	font-style: italic;
+}
+.form-control{
+	height:50px;
+}
+::placeholder{
+	font-weight: bold;
+	font-style: italic;
+	font-size:20px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block title %}{% endblock %}</title>
+  {%load static%}
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'style/navbar.css'%}">
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar-top">
+      <span class="shrink-btn">
+        <i class='bx bx-chevron-left'></i>
+      </span>
+      <h3 class="hide">ILearnPrograming</h3>
+	
+	</div>
+	<br>
+    <div class="sidebar-links">
+      <ul>
+        <div class="active-tab"></div>
+        <li class="tooltip-element" data-tooltip="0">
+          <a href="{%url 'home'%}" class="active" data-active="0">
+            <div class="icon">
+              <i class='bx bx-tachometer'></i>
+              <i class='bx bxs-tachometer'></i>
+            </div>
+            <span class="link hide">Home</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="1">
+          <a href="{%url 'tutorials'%}" data-active="1">
+            <div class="icon">
+              <i class='bx bx-folder'></i>
+              <i class='bx bxs-folder'></i>
+            </div>
+            <span class="link hide">Projects</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="2">
+          <a href="{%url 'questions'%}" data-active="2">
+            <div class="icon">
+              <i class='bx bx-message-square-detail'></i>
+              <i class='bx bxs-message-square-detail'></i>
+            </div>
+            <span class="link hide">Chat room</span>
+          </a>
+        </li>
+        <li class="tooltip-element" data-tooltip="3">
+          <a href="{%url 'tutorials'%}" data-active="3">
+            <div class="icon">
+				<i class='bx bx-notepad'></i>
+				<i class='bx bxs-notepad'></i>
+            </div>
+            <span class="link hide">Tutorials</span>
+          </a>
+        </li>
+		<li class="tooltip-element" data-tooltip="3">
+			<a href="{%url 'editor'%}" data-active="3">
+			  <div class="icon">
+				<i class='bx bx-bar-chart-square'></i>
+				<i class='bx bxs-bar-chart-square'></i>
+			  </div>
+			  <span class="link hide">Code Editor</span>
+			</a>
+		</li>
+ 
+	  {%if user.is_authenticated%}
+		<li class="tooltip-element" data-tooltip="3">
+			<a href="{%url 'Logout'%}" data-active="3">
+			<div class="icon">
+				<i class='bx bx-cog'></i>
+				<i class='bx bxs-cog'></i>
+			</div>
+			<span class="link hide">Logout</span>
+			</a>
+		</li>
+		{%else%}
+		<li class="tooltip-element" data-tooltip="3">
+			<a href="{%url 'authf'%}" data-active="3">
+		  	<div class="icon">
+				<i class='bx bx-cog'></i>
+				<i class='bx bxs-cog'></i>
+		  	</div>
+		  	<span class="link hide">Register or Login</span>
+			</a>
+		</li>
+	 	{%endif%}
+	 	<div class="tooltip">
+          <span class="show">Home</span>
+          <span>Projects</span>
+          <span>Chat Room</span>
+          <span>Tutorials</span>
+		  <span>Code Editor</span>
+     	</div>
+      </ul>
+  </nav>
+
+  
+  <main>
+  {%block content%}{% endblock %}
+  </main>
+
+  <script src="{%static 'JS/nav.js'%}"></script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	{%load static%}
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href= "{%static 'style/sign.css'%}">
+</head>
+<body class="container">
+		<h3 style="text-align: center; margin-top:20px; font-weight: bold; color:aliceblue;">Register</h3>
+		<h3 style = "text-align: center; font-weight: bold; color:aliceblue;">Please complete the following sections, for creating an account.</h3>
+		<form method="post" style="margin-top:10px;" class="row g-3 border border-5 border-info p-2 mb-4 border-opacity-75 rounded ">
+			{% csrf_token %}
+	
+			<div class="col-12">
+				<label for="username">Username:</label>
+				<input class="form-control" id = "username" type="text" name="username" maxlength="100" required placeholder="Enter your username...">
+			</div>
+			<div class="col-12">
+				<label for="first_name">First name:</label>
+				<input class="form-control"  id = "first_name" type="text" name="first_name" maxlength="100" required placeholder="Enter your first name...">
+			</div>	
+			<div class="col-12">
+				<label for="last_name">Last name:</label>
+				<input class="form-control"  id = "last_name" type="text" name="last_name" maxlength="100" required placeholder="Enter your last name...">
+			</div>	
+			<div class="col-12">
+				<label for="email">Email:</label>
+				<input class="form-control"  id = "email" type="email" name="email" maxlength="100" required placeholder="Enter your email...">
+			</div>	
+			<div class="col-12">
+				<label for="password1">Password:</label>
+				<input class="form-control"  id = "password1" type="password" name="password1" maxlength="100" required placeholder="Enter your password...">
+			</div>	
+			<div class="col-12">
+				<label for="password2">Password again:</label>
+				<input class="form-control"   id = "password2" type="password" name="password2" maxlength="100" required placeholder="Enter your password again...">
+			</div>		
+			<button type="submit" class="btn btn-success" style="background-color: lightgreen;border:0px;font-weight: bold; font-size:26px;"" >Register now to our platform</button>
+		</form>
+		<div style="text-align: center">
+			<h3 style="text-align: center; margin-top:20px; font-weight: bold; color:aliceblue;">If you have an account, please go to the login page and authenticate.</h3>
+			<a href = "{%url 'Login'%}" class="login_link"><button type="submit" class="btn btn-primary" style="width: 50%; background-color: lightgreen;border:0px;font-weight: bold; font-size:26px;">Login now to our platform</button></a>
+		</div>
+		<br>
+</body>
+</html>
