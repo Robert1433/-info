@@ -2,30 +2,26 @@
 {%block title%}Home{%endblock%}
 {%load static%}	
 
-<link rel="stylesheet" href="{%static 'style/home.css'%}">
 {%block content%}
+
+<link rel="stylesheet" href="{%static 'style/home.css'%}">
+
+
 
 	<h1 style="text-align:center; margin-top:20px;">Welcome to our website {{user.username}}!</h1>
 
-	<div class="col-md-4">
-		<div class="flipcard">
-		   <div class="flipcard-wrap">
-			 <div class="card card-front">
-				<img src="{%static 'images/OIP.jpg '%}" alt="" class="card-img-top">
-				<div class="card-body">
-				  <h5>skinny flipcard</h5>
-				  <p>a flipcard that's 1/3 width</p>
-				</div>
-			  </div>
-			  <div class="card card-back">
-				<div class="card-body">
-				  back stuff and thangs.
-				</div>
-			  </div>
-		  </div>        
+	<div class="flip-card">
+		<div class="flip-card-inner">
+		  <div class="flip-card-front">
+			<img src="{%static 'images/coding.webp'%}" alt="Avatar" style="width:300px;height:200px;">
+		  </div>
+		  <div class="flip-card-back">
+			<h1>TUTORIALS</h1>
+			<p>.........</p>
+			<p>..........</p>
+		  </div>
 		</div>
 	  </div>
-	</div>
 	
 
 {%endblock%}
