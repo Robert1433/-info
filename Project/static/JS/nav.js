@@ -3,7 +3,7 @@ const search = document.querySelector(".search");
 const sidebar_links = document.querySelectorAll(".sidebar-links a");
 const active_tab = document.querySelector(".active-tab");
 const shortcuts = document.querySelector(".sidebar-links h4");
-const tooltip_elements = document.querySelectorAll(".tooltip-element");
+const tiptool_elements = document.querySelectorAll(".tiptool-element");
 
 let activeIndex;
 
@@ -44,17 +44,17 @@ function changeLink() {
 
 sidebar_links.forEach((link) => link.addEventListener("click", changeLink));
 
-function showTooltip() {
-  let tooltip = this.parentNode.lastElementChild;
-  let spans = tooltip.children;
-  let tooltipIndex = this.dataset.tooltip;
+function showtiptool() {
+  let tiptool = this.parentNode.lastElementChild;
+  let spans = tiptool.children;
+  let tiptoolIndex = this.dataset.tiptool;
 
   Array.from(spans).forEach((sp) => sp.classList.remove("show"));
-  spans[tooltipIndex].classList.add("show");
+  spans[tiptoolIndex].classList.add("show");
 
-  tooltip.style.top = `${(100 / (spans.length * 2)) * (tooltipIndex * 2 + 1)}%`;
+  tiptool.style.top = `${(100 / (spans.length * 2)) * (tiptoolIndex * 2 + 1)}%`;
 }
 
-tooltip_elements.forEach((elem) => {
-  elem.addEventListener("mouseover", showTooltip);
+tiptool_elements.forEach((elem) => {
+  elem.addEventListener("mouseover", showtiptool);
 });

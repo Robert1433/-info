@@ -312,7 +312,7 @@ nav:hover .shrink-btn,
   color: #fff;
 }
 
-.tooltip {
+.tiptool {
   background-color: var(--main-color);
   position: absolute;
   right: -1.2rem;
@@ -334,18 +334,18 @@ nav:hover .shrink-btn,
   white-space: nowrap;
 }
 
-.tooltip span {
+.tiptool span {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   opacity: 0;
   transition: 0.3s;
 }
 
-.tooltip span.show {
+.tiptool span.show {
   opacity: 1;
 }
 
-.tooltip-element:hover ~ .tooltip {
+.tiptool-element:hover ~ .tiptool {
   opacity: 1;
   pointer-events: all;
 }
@@ -385,6 +385,6 @@ body.shrink .admin-profile {
   transition: opacity 0.3s 0s, max-width 0.7s 0s ease-in-out;
 }
 
-body.shrink .tooltip {
+body.shrink .tiptool {
   display: grid;
 }
