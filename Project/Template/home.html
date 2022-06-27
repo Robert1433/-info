@@ -11,7 +11,7 @@
 
 	<h1 style="text-align:center; margin-top:20px;">Welcome to our website {{user.username}}!</h1>
 <div class="position-relative"> 
-<div class="position-absolute top-0 start-0">
+<div class="position-absolute top-0 start-0" style="margin-top: 200px;">
 	<div class="flip-card">
 		<div class="flip-card-inner">
 		  <div class="flip-card-front">
@@ -19,14 +19,15 @@
 		  </div>
 		  <div class="flip-card-back">
 			<h1>TUTORIALS</h1>
+			<br>
 			<a href="{%url 'tutorials'%}"><button type="button" class="btn btn-success">Have a look</button></a>
-			<p>..........</p>
+			
 		  </div>
 		</div>
 	  </div>
 </div>
 
-	<div class="position-absolute top-0 start-50 translate-middle-x">
+	<div class="position-absolute top-0 start-50 translate-middle-x" style="margin-top: 200px;">
 	  <div  class="flip-card">
 		<div class="flip-card-inner">
 		  <div class="flip-card-front">
@@ -34,14 +35,15 @@
 		  </div>
 		  <div class="flip-card-back">
 			<h1>EDITOR</h1>
+			<br>	
 			<a href="{%url 'editor'%}"><button type="button" class="btn btn-success">Have a look</button></a>
-			<p>..........</p>
+			
 		  </div>
 		</div>
 	  </div>
 	</div>
 
-	<div class="position-absolute top-0 end-0">
+	<div class="position-absolute top-0 end-0" style="margin-top: 200px;">
 	  <div class="flip-card">
 		<div class="flip-card-inner">
 		  <div class="flip-card-front">
@@ -49,8 +51,8 @@
 		  </div>
 		  <div class="flip-card-back">
 			<h1>QUESTIONS</h1>
+			<br>
 			<a href="{%url 'questions'%}"><button type="button" class="btn btn-success">Have a look</button></a>
-			<p>..........</p>
 		  </div>
 		</div>
 	  </div>
