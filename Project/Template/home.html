@@ -1,15 +1,15 @@
 {%extends 'base.html'%}
 {%block title%}Home{%endblock%}
 {%load static%}	
-<link rel="stylesheet" href="{%static 'style/home.css'%}">
-{%block content%}
 
+{%block content%}
+	<link rel="stylesheet" href="{%static 'style/hom.css'%}">
 	<h1 style="text-align:center; margin-top:20px;">Welcome to our website {{user.username}}!</h1>
 	
 		<div class="flip-card">
 		<div class="flip-card-inner">
 		  <div class="flip-card-front">
-			<img src="{%static 'images/OIP.jpg'%}" alt="PYTHON" style="width:300px;height:300px;">
+			<img src="{%static 'images/OIP.jpg'%}">
 		  </div>
 		  <div class="flip-card-back">
 			<h1>John Doe</h1>

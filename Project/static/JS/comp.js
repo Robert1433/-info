@@ -1,23 +1,12 @@
-var axios = require("axios");
-var qs = require("qs");
-var data = qs.stringify({
-  code: "import java.util.Scanner;\npublic class MatSym {\n    public static void main(String[]args) {\n       Scanner in = new Scanner(System.in);\nSystem.out.println(in.nextLine());\nSystem.out.println(in.nextLine());\n    }\n}",
-  language: "java",
-  input: "Hello\nWorld",
-});
-var config = {
-  method: "post",
-  url: "https://codex-api.herokuapp.com/",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-  data: data,
-};
+const htmleditor = CodeMirror(document.querySelector(".editor .code .html-code"),{lineNumbers:true,tabSize:4,mode:"xml"});
+const csseditor = CodeMirror(document.querySelector(".editor .code .css-code"),{lineNumbers:true,tabSize:4,mode:"css"});
+const jseditor = CodeMirror(document.querySelector(".editor .code .js-code"),{lineNumbers:true,tabSize:4,mode:"javascript"});
 
-axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+document.querySelector("#run-btn").addEventListener("click",function() {
+  let htmlcode = htmleditor.getValue();
+  let csscode = "<style>" + csseditor.getValue() + "/style";
+  let jscode = "<scri" + "pt>" + jseditor.getValue() + "</scri" + "pt>";
+  let previewWindow = document.querySelector("#preview-window").contentWindow.document;
+  previewWindow.open();previewWindow.write(htmlcode + csscode + jscode);
+  previewWindow.close();
+});

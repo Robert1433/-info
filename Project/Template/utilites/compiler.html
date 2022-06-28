@@ -1,5 +1,10 @@
 {%extends "base.html"%}
-{%block content%}Editor code{%endblock%}
+{%block title%}Editor code{%endblock%}
+{%load static%}
 {%block content%}
-  <h3>This section contains an online editor for different types of programming languages.</h3>
-  <h3>Please write your code and see tour result...</h3>
+  <link rel="stylesheet" type="text/css" href="{%static 'style/editor.css'%}"
+  <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+
+
+{%endblock%}
+  
