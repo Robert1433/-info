@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout,login,authenticate
-from requests import request
-from .forms import  Register,Post
-from .models import Posts
+#from requests import request
+from .forms import  Register
+#from .models import Posts
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -10,8 +10,9 @@ from django.contrib.auth.models import User
 def home(reqeust):
 	return render(reqeust,"home.html")
 
-#django authentication
+#----------------------------------------------------------------------------->
 
+#django authentication
 def authf(request):
 
 		username = request.POST.get('username',None)
@@ -38,23 +39,30 @@ def Logout(request):
     logout(request)
     return redirect('home')
 
+#----------------------------------------------------------------------------->
 
+# editor (html + css + js)
+@login_required(login_url="/login/")
+def editor(request):
+	return render(request,"utilites/compiler.html")
 
-#Questions and answers
+#----------------------------------------------------------------------------->
+
+#django chat room 
 @login_required(login_url="/login/")
 def questions(request):
-	posts = Posts.objects.all()
+	'''posts = Posts.objects.all()
 	if request.method == 'POST':
 		postid = request.POST.get('postid')
 
 		post = Posts.objects.filter(id=postid).first()
 		if post and post.author == request.user:
 			post.delete()
-
-	return render(request,"utilites/questions.html",{"posts":posts})
+'''
+	return render(request,"utilites/questions.html",{})
 
 def create_post(request):
-	if request.method == "POST":
+	'''if request.method == "POST":
 		form = Post(request.POST,request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
@@ -62,11 +70,23 @@ def create_post(request):
 			post.save()
 			return redirect("questions")
 	else:
-		form = Post()
-	return render(request, "utilites/create_post.html",{"form":form})
+		form = Post()'''
+	return render(request, "utilites/create_post.html",{})
+
+'''
+def creationFile(request):
+	if request.method == "POST":
+		form = Chat_Form(request.POST,request.FILES)
+		if form.is_valid():
+			
+			return redirect("questions")
+	else:
+		form = Chat_Form()
+	return render(request,"utilites/creation.html",{"form":form})	
+'''
 
 
-#Notes
+
 @login_required(login_url="/login/")
 def notes(request):
 	return render(request,"utilites/notes.html")
@@ -74,9 +94,7 @@ def notes(request):
 @login_required(login_url="/login/")
 def tutorials(request):
 	return render(request,"utilites/tutorials.html")
-#Editor
-@login_required(login_url="/login/")
-def editor(request):
-	return render(request,"utilites/compiler.html")
+
+
 
 

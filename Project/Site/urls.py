@@ -3,14 +3,12 @@ from django.urls import path
 from . import views as vw
 
 urlpatterns = [
-	path('',vw.home,name='home'),
 
-	#path('sign-up',vw.signup,name="signup"),
 	path('login/',vw.authf,name="authf"),
 	path('logout/',vw.Logout,name="Logout"),
-	
+	#----------------------------------------------------------------------------->
 
-	
+	path('',vw.home,name='home'),
 	path('questions/',vw.questions,name="questions"),
 	path('create-post/',vw.create_post,name="create_post"),
 	
