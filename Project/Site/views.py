@@ -1,12 +1,15 @@
+from codecs import readbuffer_encode
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout,login,authenticate
-#from requests import request
-from .forms import  Register,PostForm
-from .models import Post
+from .models import TipUtilizator
+from .forms import  Register
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,Group
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+
+
 def home(reqeust):
 	return render(reqeust,"home.html")
 
@@ -30,14 +33,38 @@ def authf(request):
 					user = form.save()
 					login(request,user)
 					messages.success(request, "Your account was created with succses. Good luck and have fun!")
-					return redirect('home')
+					usermodel = User.objects.get(username=username)
+					newprofile = TipUtilizator.objects.create(user = usermodel)
+					newprofile.save()
+					return redirect('settings')
 				else:
 					form = Register()
 					return render(request,'register/login.html',{"form":form})					
+	
 
 def Logout(request):
     logout(request)
     return redirect('home')
+
+
+def settings(request):
+
+	UserProfile = TipUtilizator.objects.get(user = request.user)
+	if request.method == 'POST':
+		email = request.POST['email']
+		preference = request.POST['preference']
+		bio = request.POST['bio']
+		tip = request.POST['tip']
+		UserProfile.email = email
+		UserProfile.preference = preference
+		UserProfile.biograpghy = bio 
+		UserProfile.tiputilizator = tip
+		UserProfile.save()
+		if UserProfile.tiputilizator == 'Student':
+			return HttpResponse('Student')
+		return redirect('settings')
+	return render(request,'register/settings.html',{"UserProfile":UserProfile})
+
 
 #----------------------------------------------------------------------------->
 
@@ -47,7 +74,7 @@ def editor(request):
 	return render(request,"utilites/compiler.html")
 
 #----------------------------------------------------------------------------->
-
+'''
 #django chat room 
 @login_required(login_url="/login/")
 def questions(request):
@@ -91,7 +118,7 @@ def permess(request):
 		form = PostForm()
 	return render(request, "utilites/create_post.html",{"form":form})	 
 
-
+'''
 
 
 @login_required(login_url="/login/")
