@@ -1,17 +1,15 @@
-from codecs import readbuffer_encode
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout,login,authenticate
 from .models import TipUtilizator
 from .forms import  Register
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User,Group
-from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
 
 
-def home(reqeust):
-	return render(reqeust,"home.html")
+
+def home(request):
+	posts = TipUtilizator.objects.all()
+	return render(request,"home.html",{'posts':posts})
 
 #----------------------------------------------------------------------------->
 
@@ -22,6 +20,7 @@ def authf(request):
 		email = request.POST.get('email',None)
 		password = request.POST.get('password1',None)
 		password1 = request.POST.get('password2',None)
+		tiputilizator = request.POST.get('tiputilizator',None)
 		user = authenticate(request, username = username, password = password, email = email)
 		if user is not None:
 			login(request,user)
@@ -30,13 +29,14 @@ def authf(request):
 		else:
 				form = Register(request.POST)
 				if form.is_valid():
-					user = form.save()
-					login(request,user)
+					user = form.save(commit= False)
+					tip = user
+					tip.user = request.user
+					tip.save()					
+					login(request,tip)
 					messages.success(request, "Your account was created with succses. Good luck and have fun!")
-					usermodel = User.objects.get(username=username)
-					newprofile = TipUtilizator.objects.create(user = usermodel)
-					newprofile.save()
-					return redirect('settings')
+
+					return redirect('home')
 				else:
 					form = Register()
 					return render(request,'register/login.html',{"form":form})					
@@ -45,26 +45,6 @@ def authf(request):
 def Logout(request):
     logout(request)
     return redirect('home')
-
-
-def settings(request):
-
-	UserProfile = TipUtilizator.objects.get(user = request.user)
-	if request.method == 'POST':
-		email = request.POST['email']
-		preference = request.POST['preference']
-		bio = request.POST['bio']
-		tip = request.POST['tip']
-		UserProfile.email = email
-		UserProfile.preference = preference
-		UserProfile.biograpghy = bio 
-		UserProfile.tiputilizator = tip
-		UserProfile.save()
-		if UserProfile.tiputilizator == 'Student':
-			return HttpResponse('Student')
-		return redirect('settings')
-	return render(request,'register/settings.html',{"UserProfile":UserProfile})
-
 
 #----------------------------------------------------------------------------->
 

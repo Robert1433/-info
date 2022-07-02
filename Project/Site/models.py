@@ -12,7 +12,7 @@ class TipUtilizator(models.Model):
     biograpghy = models.TextField(blank=True,null=True)
     tiputilizator = models.CharField(max_length= 255,null = True)
     def __str__(self):
-        return self.user.username
+        return self.preference + '/n' + self.tiputilizator
 
 
 

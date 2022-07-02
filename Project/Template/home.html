@@ -50,12 +50,17 @@
 		  <div class="flip-card-back">
 			<h1>QUESTIONS</h1>
 			<br>
-			<a href="{%url 'settings'%}"><button type="button" class="btn btn-success">Have a look</button></a>
+			<a href="#"><button type="button" class="btn btn-success">Have a look</button></a>
 		  </div>
 		</div>
 	  </div>
 	</div>
-
+	{%for post in posts%}
+		{%if post.tiputilizator == 'Student' %}
+			<h1>fffffffffffff</h1>
+				
+		{%endif%}
+	{%endfor %}
 </div>
 	  
 	

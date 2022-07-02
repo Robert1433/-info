@@ -6,7 +6,6 @@ urlpatterns = [
 
 	path('login/',vw.authf,name="authf"),
 	path('logout/',vw.Logout,name="Logout"),
-	path('settings/',vw.settings,name="settings"),
 	#----------------------------------------------------------------------------->
 
 	path('',vw.home,name='home'),
