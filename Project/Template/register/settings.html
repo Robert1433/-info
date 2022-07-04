@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Settings account</title>
+</head>
+<body>
+	<h1>{{user.username}}</h1>
+	<form method="post"> {%csrf_token%}
+		<div>
+			<label for="email">Email</label>
+			<input type = "email" name = "email" id = "email" value = "{{user_profile.email}}">
+		</div>
+		<div>
+			<label for="">Preference name</label>
+			<input type = "text" name = "preferences" id = "preferences" value = "{{user_profile.preference}}">
+		</div>
+		<div>
+			<label for="">Biograpghy</label>
+			<textarea name = "bio" id = "bio" >{{user_profile.biograpghy}}</textarea>
+		</div>
+		<div>
+			<label>Type</label>
+			<input type = "text" name = "tip" id = "tip" value = "{{user_profile.tiputilizator}}">
+		</div>
+		<button type="submit" class="btn btn-reset">Upload</button>
+	</form>	
+</body>
+</html>
