@@ -12,6 +12,21 @@ from django.http import FileResponse, JsonResponse
 from reportlab.pdfgen import canvas
 
 
+
+
+@login_required(login_url="/login/")
+def editor(request):
+	return render(request,"utilites/compiler.html")
+
+
+
+
+
+
+
+
+
+
 def home(request):
 	posts = Profile.objects.all()
 	return render(request,"home.html",{'posts':posts})
@@ -248,10 +263,7 @@ def profile(request, pk):
 
 
 
-# editor (html + css + js)
-@login_required(login_url="/login/")
-def editor(request):
-	return render(request,"utilites/compiler.html")
+
 
 #----------------------------------------------------------------------------->
 #Tutorials

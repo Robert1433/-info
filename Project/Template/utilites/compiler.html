@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -41,6 +41,7 @@
   <div class="preview-area">
     <iframe id="preview-window"></iframe>
   </div>
+  <a href="http://localhost:1337/">Link catre fila</a>
   <script>
     function showPreview(){
       let htmlCode = document.getElementById("htmlCode").value;
@@ -53,38 +54,5 @@
     }
   </script>
 </body>
-</html>-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editor code</title>
-  {%load static%}
-  <link rel="stylesheet" href="{%static 'styles/editorcompiler.css'%}">
-</head>
-<body>
-  <div class="header">Codeboard Online IDE</div>
-  <div class="control-panel">Play with languages: &nbsp;&nbsp;
-    <select id="languages" class="languages" onchange="switchlang()">
-      <option value = "c">C</option>
-      <option value = "cpp">C++</option>
-      <option value = "py">Python</option>
-      <option value = "node">Node JS</option>
-    </select>
-  </div>
-  <div class="editor" id = "editor">
-    <div class="button-container">
-      <button onclick="execcode()" class="btn">Run</button>
-    </div>
-  </div>
-  <div class="output"></div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="JS/libs/ace.js"></script>
-    <script src="JS/libs/theme-monokai.js"></script>
-    <script src="JS/ide.js"></script>
-  <script src="{%static 'JS/editcomp.js'%}">
-  </script>
-</body>
 </html>
+

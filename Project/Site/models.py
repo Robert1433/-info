@@ -19,21 +19,21 @@ class Profile(models.Model):
 
 
 class PostLessonTeacher(models.Model):
-    id = models.UUIDField(primary_key=True,default=uuid.uuid4)
-    teacher_user = models.CharField(max_length=255)
-    text = models.TextField(max_length=1000)
-    update = models.FileField(upload_to = "files")
-    imag = models.ImageField(upload_to = "images")     
-    creation_at = models.DateTimeField(default=datetime.now)
+    id = models.UUIDField(primary_key=True,default=uuid.uuid4,null=False)
+    teacher_user = models.CharField(max_length=255,null = True)
+    text = models.TextField(max_length=1000,null = True)
+    update = models.FileField(upload_to = "files",null = True)
+    imag = models.ImageField(upload_to = "images",null = True)     
+    creation_at = models.DateTimeField(default=datetime.now,null = True)
 
     def __str__(self):
         return self.user
 
 class Quiz(models.Model):
-    name = models.CharField(max_length=50)
-    desc = models.CharField(max_length=500)    
-    number_of_questions = models.IntegerField(default=1)
-    time = models.IntegerField(help_text="Duration of the quiz in seconds", default="1")
+    name = models.CharField(max_length=50,null = True)
+    desc = models.CharField(max_length=500,null = True)    
+    number_of_questions = models.IntegerField(default=1,null = True)
+    time = models.IntegerField(help_text="Duration of the quiz in seconds", default="1",null = True)
     
     def __str__(self):
         return self.name
@@ -43,7 +43,7 @@ class Quiz(models.Model):
     
 class Question(models.Model):
     content = models.CharField(max_length=200)
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null = True)
     
     def __str__(self):
         return self.content
@@ -53,16 +53,16 @@ class Question(models.Model):
     
     
 class Answer(models.Model):
-    content = models.CharField(max_length=200)
-    correct = models.BooleanField(default=False)
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200,null = True)
+    correct = models.BooleanField(default=False,null = True)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE,null = True)
     
     def __str__(self):
         return f"question: {self.question.content}, answer: {self.content}, correct: {self.correct}"
     
 class Marks_Of_User(models.Model):
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null = True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null = True)
     score = models.FloatField()
     
     def __str__(self):
